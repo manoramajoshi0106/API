@@ -13,7 +13,7 @@ class UserController {
     static getalluser = async (req, res) => {
         try {
             const users = await UserModel.find()
-            // console.log(user)
+            //console.log(user)
             res.status(201).json({
                 status: 'success',
                 message: 'successfull',
@@ -33,11 +33,11 @@ class UserController {
             const imageUpload = await cloudinary.uploader.upload(file.tempFilePath, {
                 folder: 'profileImageapi'
             })
-            //console.log(imageUpload)
+            console.log(imageUpload)
             //console.log(req.body)
             const { n, e, p, cp, } = req.body
             const user = await UserModel.findOne({ email: e })
-            //console.log(user)
+            console.log(user)
             if (user) {
                 res
                     .status(401)
@@ -116,15 +116,16 @@ class UserController {
         }
     }
 
+    // These three api updatepassword,updateprofile,getuserdetails after user logeed in run
     static updatePassword = async (req, res) => {
         try {
             //console.log('hello',req)
             const { old_password, new_password, cp } = req.body
             if (old_password && new_password && cp) {
-                const user= await UserModel.findById(req.data1.id)
+                const user = await UserModel.findById(req.data1.id)
 
                 const isMatched = await bcrypt.compare(old_password, user.password)
-                
+
                 if (!isMatched) {
                     res
                         .status(401)
@@ -199,11 +200,11 @@ class UserController {
         }
     }
 
-    static getalluserDetails = async (req, res) => {
+    static getuserDetails = async (req, res) => {
         try {
             const { id, n, e } = req.data1
             const user = await UserModel.findById(req.data1.id)
-            //console.log(user)
+            //console.log('user')
             res.status(201).json({
                 status: 'success',
                 message: 'successfull',
