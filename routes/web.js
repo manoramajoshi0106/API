@@ -13,7 +13,7 @@ router.post('/userinsert',UserController.userinsert)
 router.post('/verifylogin',UserController.verifyLogin)
 router.post('/updatepassword',checkauth,UserController.updatePassword)
 router.post('/updateprofile',checkauth,UserController.updateProfile)
-router.get('/getuserdetails',checkauth,UserController.getuserDetails)
+router.get('/me',checkauth,UserController.getuserDetails)
 router.post('/getsingleuser',UserController.getsingleUser)
 router.post('/deleteuser',UserController.deleteUser)
 
