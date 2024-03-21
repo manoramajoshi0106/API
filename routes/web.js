@@ -16,6 +16,7 @@ router.post('/updateprofile',checkauth,UserController.updateProfile)
 router.get('/me',checkauth,UserController.getuserDetails)
 router.post('/getsingleuser',UserController.getsingleUser)
 router.post('/deleteuser',UserController.deleteUser)
+router.get('/logout', UserController.logOut)
 
 //categorycontroller
 router.post('/categoryinsert',CategoryController.categoryinsert)

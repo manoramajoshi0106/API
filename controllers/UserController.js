@@ -249,13 +249,17 @@ class UserController {
             console.log(err)
         }
     }
-    // static logOut= async (req,res)=>{
-    //     try {
-
-    //     } catch (error) {
-
-    //     }
-    // }
+    static logOut= async (req,res)=>{
+        try {
+            res.clearCookie('token')
+            res.status(200).json({
+                success: true,
+                message: "Logged Out",
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
 
 }
