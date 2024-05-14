@@ -1,9 +1,10 @@
+const orderModel = require("../models/Order")
 class OrderController {
     static newOrder = async (req, res) => {
         try {
             console.log(req.body)
             const { shippingInfo, orderItems, paymentInfo, itemsPrice, taxPrice, shippingPrice, totalPrice } = req.body
-            const order = await OrderModel.create({
+            const order = await orderModel.create({
                 shippingInfo,
                 orderItems,
                 paymentInfo,
@@ -12,7 +13,7 @@ class OrderController {
                 shippingPrice,
                 totalPrice,
                 paidAt: Date.now(),
-                user: req.user._id
+                user: req.data1._id
 
             })
             res
@@ -20,8 +21,8 @@ class OrderController {
                 .json({ status: "success", message: "Order added Successfully 😃🍻", order });
         } catch (err) {
             console.log(err)
-            res.status(400).json({status: "failed ", message: err.message})
-            
+            res.status(400).json({ status: "failed ", message: err.message })
+
         }
 
     }
