@@ -20,7 +20,10 @@ class OrderController {
                 .json({ status: "success", message: "Order added Successfully 😃🍻", order });
         } catch (err) {
             console.log(err)
+            res.status(400).json({status: "failed ", message: err.message})
+            
         }
+
     }
 }
 module.exports = OrderController;
